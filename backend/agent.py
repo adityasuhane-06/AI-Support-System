@@ -18,7 +18,7 @@ structured_gemini = llm_gemini.with_structured_output(TriageResponse)
 
 # [SECONDARY TIER] OpenRouter Cloud (Multimodal Fallback)
 llm_openrouter = ChatOpenAI(
-    model="meta-llama/llama-3.2-11b-vision-instruct:free", # Explicit free vision model guarantee
+    model="google/gemma-3-27b-it:free", # Explicit free vision model guarantee
     temperature=0.1,
     api_key=os.getenv("OPENROUTER_API_KEY"),
     base_url="https://openrouter.ai/api/v1"
