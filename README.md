@@ -11,6 +11,14 @@ An autonomous, full-stack AI Customer Support system engineered specifically for
 
 ---
 
+## 🌐 Live Deployments & Demonstration
+
+- **Walkthrough Video:** [Watch the 4-Minute Loom Demonstration](https://drive.google.com/file/d/1ezWB1op4_ejJpfSK7vXUS479i4gGxfwO/view?usp=sharing)
+- **Live React Frontend (Vercel):** [https://ai-support-system-three.vercel.app/](https://ai-support-system-three.vercel.app/)
+- **Live FastAPI Backend (Railway):** [https://ai-support-system-production.up.railway.app/api/health](https://ai-support-system-production.up.railway.app/api/health)
+
+---
+
 ## 📖 Project Context
 
 ### ❓ What is this?
