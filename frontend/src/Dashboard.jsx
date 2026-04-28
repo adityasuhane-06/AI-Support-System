@@ -4,11 +4,12 @@ import { Send, AlertTriangle, CheckCircle, RotateCcw, Package, CreditCard, Cross
 import AnimatedCore from './AnimatedCore';
 
 const PRESETS = [
-  { id: 1, name: 'Medical Hazard', text: "My baby has a huge rash since applying the cream from order MW-12345.", icon: AlertTriangle, color: 'text-red-400' },
-  { id: 2, name: 'KSA Customs Fee', text: "I need to return my car seat from KSA order MW-80002.", icon: Crosshair, color: 'text-orange-400' },
-  { id: 3, name: 'Out of Stock Block', text: "I demand an EXCHANGE for my Bugaboo Stroller on MW-80003.", icon: RotateCcw, color: 'text-blue-400' },
-  { id: 4, name: 'Delivery Status', text: "When is my delivery arriving for MW-12345?", icon: Package, color: 'text-emerald-400' },
-  { id: 5, name: 'Warranty Claim', text: "My Nanit camera broke after 180 days on Order MW-80001.", icon: CreditCard, color: 'text-purple-400' }
+  { id: 1, name: 'Medical Hazard', text: "Hello support, I applied the baby cream from order MW-80001 yesterday and my baby immediately developed a huge red rash across their back. I am taking them to the doctor now. Please refund this immediately and investigate your batch!", icon: AlertTriangle, color: 'text-red-400' },
+  { id: 2, name: 'KSA Customs Fee', text: "Hi Mumzworld, I ordered the Doona car seat to Riyadh on order MW-80002, but when the courier arrived they asked me to pay an extra 150 SAR in customs duties! Your website said shipping was free. I want to return this right now.", icon: Crosshair, color: 'text-orange-400' },
+  { id: 3, name: 'Out of Stock Block', text: "I just received my Bugaboo Stroller (MW-80003) but it's the wrong color! I ordered Midnight Black but got Grey. I demand an immediate EXCHANGE, not a refund. Please send the correct one.", icon: RotateCcw, color: 'text-blue-400' },
+  { id: 4, name: 'Missing Item / Fraud', text: "I opened my package for MW-80001 and I want to return it, but why is the main accessory missing like that? The box was totally sealed but the camera base is just gone. Help!", icon: AlertTriangle, color: 'text-rose-400' },
+  { id: 5, name: 'Warranty Claim', text: "My Nanit camera (Order MW-80001) just stopped connecting to WiFi. It's been 6 months since I bought it. Does the warranty cover a replacement unit? I really need it for the nursery.", icon: CreditCard, color: 'text-purple-400' },
+  { id: 6, name: 'VIP Priority', text: "I am a VIP Diamond member and my baby formula (MW-80001) got delivered to the wrong villa! I am very frustrated with this service. Fix this today.", icon: Package, color: 'text-emerald-400' }
 ];
 
 export default function Dashboard({ onSubmit, isProcessing, responseData }) {
