@@ -11,7 +11,7 @@ I built the **Mumzworld Agentic Triage System**, a multimodal logistics routing 
 - *(Setup and run instructions are located in the master `README.md` and take under 5 minutes to execute via Uvicorn/Vite).*
 
 **4. Walkthrough Video**
-- **Video Demo (5 inputs, including uncertainty refusal):** [https://drive.google.com/file/d/1ezWB1op4_ejJpfSK7vXUS479i4gGxfwO/view?usp=sharing](https://drive.google.com/file/d/1ezWB1op4_ejJpfSK7vXUS479i4gGxfwO/view?usp=sharing)
+- **Prototype Walkthrough (5 inputs, including uncertainty refusal):** [https://drive.google.com/file/d/1ezWB1op4_ejJpfSK7vXUS479i4gGxfwO/view?usp=sharing](https://drive.google.com/file/d/1ezWB1op4_ejJpfSK7vXUS479i4gGxfwO/view?usp=sharing)
 
 **5. Markdown Deliverables**
 - **EVALS:** Detailed 10-case rubric, scoring, and failure honesty can be found in the repository: [`EVALS.md`](https://github.com/adityasuhane-06/AI-Support-System/blob/main/EVALS.md)
