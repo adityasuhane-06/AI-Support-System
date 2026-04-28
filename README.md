@@ -123,11 +123,36 @@ npm run dev
 
 ## 🤖 Tooling & Transparency
 
-In the spirit of complete transparency for this challenge, here is the exact tooling stack used to build this repository:
+### 1. Models & Tools Used
 
-- **AI Assistants Used:** The vast majority of this infrastructure (FastAPI, LangGraph orchestration, React Three Fiber UI, and Cloud Deployment configuration) was pair-programmed and architected using **Google DeepMind's Antigravity Agent**.
-- **Models Used:**
-  - `gemini-2.5-flash` (Primary Intelligence & Vision via Native API)
-  - `google/gemma-3-12b-it:free` (Secondary Vision Fallback via OpenRouter)
-  - `glm-4.7-flash` (Tertiary Text Fallback via Z.AI)
-- **Harnesses & Frameworks:** LangGraph (State orchestration), Pydantic (Strict schema validation), Vite + React (Frontend), Tailwind v4 (Styling), MongoDB Atlas (RAG Database).
+| Tool | Role |
+|------|------|
+| **Google DeepMind Antigravity Agent** | Primary coding harness — pair-programmed the FastAPI backend, LangGraph pipeline, MongoDB seed data, React Three Fiber UI, and cloud deployment config |
+| `gemini-2.5-flash` | Primary LLM — multimodal intelligence (text + image) via native Google API |
+| `google/gemma-3-12b-it:free` | Secondary fallback via OpenRouter — activated when Gemini hits rate limits |
+| `glm-4.7-flash` | Tertiary text-only fallback via Z.AI — final safety net in the cascade |
+
+### 2. How We Used These Tools
+
+The Antigravity Agent was used in a **continuous pair-coding loop** throughout the build. It was not a one-shot generator — we iterated over the LangGraph state graph design, the Pydantic schema fields, and the cascade fallback logic in multiple rounds of feedback. The agent was given the MongoDB seed structure and asked to generate matching graph nodes. The eval test cases were also generated via prompt iteration: we ran live inputs against the system, observed failures, then updated the test case documentation to reflect real observed behavior.
+
+### 3. What Worked, What Did Not, and Where We Overruled the Agent
+
+- **Worked well:** The agent correctly scaffolded the LangGraph `AgentState` TypedDict and the 3-tier cascade exception handling on first attempt. The Pydantic schema was accurate immediately.
+- **Did not work:** The agent initially suggested `meta-llama/llama-3.2-11b-vision-instruct:free` as the OpenRouter model. At runtime, this returned a 404 — OpenRouter had deprecated that endpoint. We overruled the agent and manually scraped the OpenRouter `/models` API to identify the correct live free-tier model (`gemma-3-12b-it:free`).
+- **Overruled again:** The agent produced overly verbose marketing language in the initial README draft ("enterprise-grade", "highly leveraged", "eliminate triage latency"). We manually stripped these in a full audit pass before submission.
+
+### 4. Key System Prompt That Shaped the Output
+
+The core system prompt injected into every LLM call in the cascade is:
+
+```
+You are an AI customer support triage assistant for Mumzworld, the largest e-commerce platform for mothers in the Middle East.
+Your job is to analyze customer complaints and return a structured JSON triage payload.
+You must NEVER invent order details, policies, or product information not present in the context provided.
+If the query is outside the scope of e-commerce customer support, set intent to UNKNOWN_UNCERTAIN and requires_human_escalation to true.
+All draft replies must be generated in both English and native Fusha Arabic.
+```
+
+This prompt directly enforces the uncertainty handling, the bilingual output requirement, and the grounding constraint.
+
