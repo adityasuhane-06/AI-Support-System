@@ -10,8 +10,8 @@ function App() {
     setIsProcessing(true);
     setResponseData(null);
     try {
-      // Connect to the Local FastAPI Agent Node
-      const res = await axios.post('http://127.0.0.1:8000/api/triage', {
+      // Connect to the Cloud Railway API Pipeline
+      const res = await axios.post('https://ai-support-system-production.up.railway.app/api/triage', {
         email_text: emailText,
         image_base64: imageBase64,
         image_description: null // We rely entirely on the LLM vision node now
