@@ -3,20 +3,36 @@ import re
 from typing import TypedDict, Optional
 from langgraph.graph import StateGraph, START, END
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 from models import TriageResponse
 from database import get_order_details, get_customer_details
 from rag_policy import retrieve_policy_context
 
-# Initialize Gemini Model via LangChain
-# Gemini 1.5 Flash is incredibly fast and highly capable of multimodal context and structured output.
-llm = ChatGoogleGenerativeAI(
+# [PRIMARY TIER] Google Gemini API (Multimodal)
+llm_gemini = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
-    temperature=0.1,  # Low temperature for highly deterministic, policy-abiding outputs
+    temperature=0.1,
     api_key=os.getenv("GEMINI_API_KEY")
 )
+structured_gemini = llm_gemini.with_structured_output(TriageResponse)
 
-# Enforce structured output via Pydantic
-structured_llm = llm.with_structured_output(TriageResponse)
+# [SECONDARY TIER] OpenRouter Cloud (Multimodal Fallback)
+llm_openrouter = ChatOpenAI(
+    model="google/gemini-2.5-flash:free", # Explicit free vision model guarantee
+    temperature=0.1,
+    api_key=os.getenv("OPENROUTER_API_KEY"),
+    base_url="https://openrouter.ai/api/v1"
+)
+structured_openrouter = llm_openrouter.with_structured_output(TriageResponse)
+
+# [TERTIARY TIER] Z.AI Engine (Text-Only Fallback)
+llm_zai = ChatOpenAI(
+    model="glm-4.7-flash",
+    temperature=0.1,
+    api_key=os.getenv("ZAI_API_KEY"),
+    base_url="https://api.z.ai/api/paas/v4/"
+)
+structured_zai = llm_zai.with_structured_output(TriageResponse)
 
 # Define our Agent's State (Memory during a single execution)
 class AgentState(TypedDict):
@@ -140,8 +156,22 @@ You must output exactly according to the requested JSON schema, particularly ens
         
     payload = [HumanMessage(content=content_blocks)]
 
-    # We pass the prompt to the structured LLM
-    result = structured_llm.invoke(payload)
+    # 3-Tier High Availability Cascade
+    try:
+        print("[NODE] Executing [PRIMARY] Google Gemini...")
+        result = structured_gemini.invoke(payload)
+    except Exception as e_gemini:
+        print(f"[NODE] PRIMARY FAILED ({e_gemini}). Cascading to [SECONDARY] OpenRouter...")
+        try:
+            result = structured_openrouter.invoke(payload)
+        except Exception as e_openrouter:
+            print(f"[NODE] SECONDARY FAILED ({e_openrouter}). Cascading to [TERTIARY] Z.AI Text-Only...")
+            
+            # GLM-4.7-Flash is a Text-Only model. 
+            # We MUST strip the Multimodal Base64 Image array to prevent a fatal 400 crash on Z.AI.
+            text_only_blocks = [{"type": "text", "text": system_prompt}]
+            result = structured_zai.invoke([HumanMessage(content=text_only_blocks)])
+
     state["final_response"] = result
     return state
 
