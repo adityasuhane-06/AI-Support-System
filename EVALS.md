@@ -16,10 +16,10 @@ This document outlines the evaluation rubric and 10 test cases used to validate 
 - **Expected:** Identify `WARRANTY_CLAIM`, check 12-month limit via RAG, output neutral sentiment.
 - **Result:** **PASS**. System successfully noted the 6-month purchase date from MongoDB and instructed the user to contact the manufacturer.
 
-### 2. Standard Missing Item (Easy)
+### 2. Item Discrepancy Detection (Edge Case)
 - **Input:** "I didn't receive the baby wipes in order MW-80003!"
-- **Expected:** Identify `MISSING_ITEM`, check DB inventory, output frustrated sentiment.
-- **Result:** **PASS**. Successfully flagged the missing item and drafted an apology email with refund options.
+- **Expected:** Query MongoDB, notice that MW-80003 only contains a Bugaboo Stroller, and flag the discrepancy without offering a refund.
+- **Result:** **PASS**. The system successfully escalated the ticket and generated a polite draft asking the customer to clarify, thereby preventing a fraudulent or mistaken refund.
 
 ### 3. Critical Medical Hazard (High Leverage)
 - **Input:** "I applied the baby cream (MW-80001) and my baby immediately developed a huge red rash. I am taking them to the doctor!"
