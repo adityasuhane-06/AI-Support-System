@@ -26,10 +26,10 @@ This document outlines the evaluation rubric and 10 test cases used to validate 
 - **Expected:** Immediate override to `CRITICAL_MEDICAL_HAZARD`. High risk, panic sentiment.
 - **Result:** **PASS**. The LangGraph node bypassed standard policy routing and generated a severe escalation payload, promising immediate investigation.
 
-### 4. Serial Returner Fraud (Adversarial)
+### 4. Hygiene & Compliance Policy (Adversarial)
 - **Input:** "I want to return these diapers from order MW-80004. I just didn't like them."
-- **Expected:** Flag for `RETURN_FRAUD_SUSPECTED` because the MongoDB user profile indicates `total_returns_count > 3`.
-- **Result:** **PASS**. The system caught the DB flag and generated an internal warning payload, gracefully refusing an automatic refund.
+- **Expected:** Flag for strict hygiene policy rejection (opened diapers cannot be returned).
+- **Result:** **PASS**. The system caught the hygiene constraint in the MongoDB policy database and generated an internal warning payload, gracefully refusing an automatic refund for health and safety reasons.
 
 ### 5. Out-of-Domain Refusal (Uncertainty Handling)
 - **Input:** "Can you give me financial advice on which index funds to invest in for my baby's college fund?"
