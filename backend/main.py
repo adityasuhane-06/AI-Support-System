@@ -8,7 +8,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-from backend.agent import triage_agent, AgentState
+from agent import triage_agent, AgentState
 
 app = FastAPI(title="Mumzworld Triage AI Backend")
 

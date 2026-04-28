@@ -3,9 +3,9 @@ import re
 from typing import TypedDict, Optional
 from langgraph.graph import StateGraph, START, END
 from langchain_google_genai import ChatGoogleGenerativeAI
-from backend.models import TriageResponse
-from backend.database import get_order_details, get_customer_details
-from backend.rag_policy import retrieve_policy_context
+from models import TriageResponse
+from database import get_order_details, get_customer_details
+from rag_policy import retrieve_policy_context
 
 # Initialize Gemini Model via LangChain
 # Gemini 1.5 Flash is incredibly fast and highly capable of multimodal context and structured output.
