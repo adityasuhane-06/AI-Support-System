@@ -3,7 +3,7 @@
 **1. Track:** Track A: AI Engineering Intern
 
 **2. Summary**
-I built the **Mumzworld Agentic Triage System**, a multimodal logistics routing prototype designed to assist the customer support team. The system intercepts unstructured customer complaints (text and images), cross-references a local MongoDB cluster for live inventory/policy context (RAG), and utilizes a stateful LangGraph pipeline to output highly deterministic, Pydantic-validated JSON triage payloads. It instantly flags edge cases (e.g., medical hazards, serial return fraud, hygiene policy violations) and translates draft responses into Fusha Arabic, helping to reduce manual support bottlenecks while minimizing AI hallucination risks.
+I built the **Mumzworld Agentic Triage System**, a multimodal logistics routing prototype designed to assist the customer support team. The system intercepts unstructured customer complaints (text and images), cross-references a local MongoDB cluster for live inventory/policy context (RAG), and utilizes a stateful LangGraph pipeline to output Pydantic-validated JSON triage payloads. It flags edge cases (e.g., medical hazards, serial return fraud, hygiene policy violations) and translates draft responses into Fusha Arabic, helping to reduce manual support bottlenecks while minimizing AI hallucination risks.
 
 **3. Prototype Access**
 - **Live Dashboard Prototype:** [https://ai-support-system-three.vercel.app/](https://ai-support-system-three.vercel.app/)
@@ -18,10 +18,10 @@ I built the **Mumzworld Agentic Triage System**, a multimodal logistics routing 
 - **TRADEOFFS:** Architecture scope, LangGraph vs LangChain routing, and uncertainty logic can be found in the repository: [`TRADEOFFS.md`](https://github.com/adityasuhane-06/AI-Support-System/blob/main/TRADEOFFS.md)
 
 **6. AI Usage Note**
-I used **Google DeepMind's Antigravity Agent** for pair-programming, covering the FastAPI backend, LangGraph orchestration, and the React Three Fiber UI. The primary model is `gemini-2.5-flash` for multimodal intelligence. If Gemini is rate-limited, the system cascades to `google/gemma-3-12b-it:free` via OpenRouter, then falls back to `glm-4.7-flash` via Z.AI as a tertiary text-only node.
+I used **Google DeepMind's Antigravity Agent** for pair-programming, covering the FastAPI backend, LangGraph orchestration, and the React Three Fiber UI. The primary model is `gemini-2.5-flash` for multimodal intelligence. If Gemini is rate-limited, the system cascades to `google/gemma-3-12b-it:free` via OpenRouter, then falls back to `glm-4.7-flash` via Z.AI as a tertiary text-only fallback.
 
 **7. Time Log**
-- **Research & Scoping:** 1 hour (Deciding to build a structured RAG triage node to prevent refund hallucinations).
+- **Research & Scoping:** 1 hour (Deciding to build a structured RAG triage system to prevent refund hallucinations).
 - **Backend & LangGraph Pipeline:** 2.5 hours (Setting up Pydantic strict schemas, MongoDB mocked data, and the 3-Tier Cascade).
 - **Frontend UI & Visualization:** 1 hour (Building the React Vite interface and wiring the API endpoints).
 - **Evals & Documentation:** 1 hour (Running adversarial edge cases and documenting tradeoffs).
