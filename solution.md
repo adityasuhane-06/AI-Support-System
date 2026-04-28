@@ -24,7 +24,7 @@ I built the **Mumzworld Agentic Triage System**, a multimodal logistics routing 
 **Where we overruled:** Two deliberate interventions. First, the agent proposed `llama-3.2-11b-vision` as the OpenRouter fallback — we ran a live diagnostic, caught a 404 at runtime, then wrote a Python script to query the OpenRouter `/models` endpoint directly and identify the correct active free-tier model. The agent did not catch this; we did. Second, after the README was drafted, we ran a documentation audit across all submission files to strip inflated, buzzword-heavy language the agent had introduced. The agent optimizes for persuasion; we optimized for accuracy.
 
 **7. Time Log**
-- **Research & Scoping:** 1 hour (Read the brief, browsed Mumzworld, picked customer support triage as the problem — it's repetitive, high-volume, and a clear cost drain).
+- **Research & Scoping:** 1 hour (Picked customer support triage — every mishandled ticket costs agent time and risks a wrong refund. Clear ROI, clear scope).
 - **Backend & LangGraph Pipeline:** 2.5 hours (Setting up Pydantic strict schemas, MongoDB mocked data, and the 3-Tier Cascade).
 - **Frontend UI & Visualization:** 1 hour (Building the React Vite interface and wiring the API endpoints).
 - **Evals & Documentation:** 1 hour (Running adversarial edge cases and documenting tradeoffs).
