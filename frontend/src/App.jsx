@@ -10,8 +10,9 @@ function App() {
     setIsProcessing(true);
     setResponseData(null);
     try {
-      // Connect to the Cloud Railway API Pipeline
-      const res = await axios.post('https://ai-support-system-production.up.railway.app/api/triage', {
+      // Dynamically load the API URL from Vite's local .env or Vercel's Environment Variables
+      const API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      const res = await axios.post(`${API_URL}/api/triage`, {
         email_text: emailText,
         image_base64: imageBase64,
         image_description: null // We rely entirely on the LLM vision node now
