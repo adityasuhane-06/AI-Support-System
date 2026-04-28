@@ -22,7 +22,7 @@ An autonomous, full-stack AI Customer Support system engineered specifically for
 ## 📖 Project Context
 
 ### ❓ What is this?
-The Mumzworld Agentic Triage Node is an advanced Level-3 automated customer support platform. It intercepts raw customer complaint emails, physically analyzes uploaded images of damaged products using computer vision, securely taps into MongoDB to verify order parameters, and utilizes a stateful logic graph to output deterministic logistics commands alongside bilingual draft responses.
+The Mumzworld Agentic Triage System is an advanced Level-3 automated customer support platform. It intercepts raw customer complaint emails, physically analyzes uploaded images of damaged products using computer vision, securely taps into MongoDB to verify order parameters, and utilizes a stateful logic graph to output deterministic logistics commands alongside bilingual draft responses.
 
 ### 🎯 Why did we build this?
 Traditional e-commerce support pipelines rely heavily on human agents manually cross-referencing return policies against massive logistics databases. This results in severe bottlenecks, slow resolution times, and the risk of approving fraudulent returns. This system was engineered to **eliminate triage latency**. By executing complex edge-case algorithms, the AI can instantly identify high-risk anomalies (e.g., medical hazards, cross-border fees, or serial return fraud) in milliseconds before safely handing the deeply-formatted ticket to a human support agent for 1-click execution.

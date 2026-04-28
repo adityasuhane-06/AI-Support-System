@@ -3,7 +3,7 @@
 **1. Track:** Track A: AI Engineering Intern
 
 **2. Summary**
-I built the **Mumzworld Agentic Triage Node**, a multimodal logistics routing prototype designed to assist the customer support team. The system intercepts unstructured customer complaints (text and images), cross-references a local MongoDB cluster for live inventory/policy context (RAG), and utilizes a stateful LangGraph pipeline to output highly deterministic, Pydantic-validated JSON triage payloads. It instantly flags edge cases (e.g., medical hazards, serial return fraud, hygiene policy violations) and translates draft responses into Fusha Arabic, helping to reduce manual support bottlenecks while minimizing AI hallucination risks.
+I built the **Mumzworld Agentic Triage System**, a multimodal logistics routing prototype designed to assist the customer support team. The system intercepts unstructured customer complaints (text and images), cross-references a local MongoDB cluster for live inventory/policy context (RAG), and utilizes a stateful LangGraph pipeline to output highly deterministic, Pydantic-validated JSON triage payloads. It instantly flags edge cases (e.g., medical hazards, serial return fraud, hygiene policy violations) and translates draft responses into Fusha Arabic, helping to reduce manual support bottlenecks while minimizing AI hallucination risks.
 
 **3. Prototype Access**
 - **Live Dashboard Prototype:** [https://ai-support-system-three.vercel.app/](https://ai-support-system-three.vercel.app/)

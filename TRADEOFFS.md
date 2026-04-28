@@ -3,9 +3,9 @@
 This document outlines the engineering decisions, rejected scopes, and future roadmap for the Mumzworld AI Support System, as required by the grading rubric.
 
 ## 1. Problem Selection: Why Triage?
-We chose **Customer Support Triage & Logistics Routing** because it is a highly leveraged, massive operational bottleneck for e-commerce companies. 
+We chose **Customer Support Triage & Logistics Routing** because it is a real, high-frequency operational bottleneck for e-commerce companies.
 - **What we rejected:** We initially considered building an AI chatbot that talks directly to customers. We rejected this because autonomous LLM chatbots in e-commerce are prone to hallucinating return policies and authorizing incorrect refunds, which creates massive financial liability. 
-- **Why Triage is better:** By building a "Triage Node" that sits *behind* the scenes, the AI does the heavy lifting of extracting order IDs, checking MongoDB policies, and determining risk, but it ultimately hands a strictly structured JSON payload to a human agent for 1-click execution. This maximizes efficiency while eliminating hallucination liability.
+- **Why Triage is better:** By building a "Triage System" that sits *behind* the scenes, the AI does the heavy lifting of extracting order IDs, checking MongoDB policies, and determining risk, but it ultimately hands a strictly structured JSON payload to a human agent for 1-click execution. This reduces errors without replacing the human in the loop.
 
 ## 2. Model & Architecture Choices
 - **LangGraph over standard LangChain:** We chose LangGraph because customer support requires cyclic state management. If the AI realizes it's missing an Order ID, a standard chain breaks. LangGraph allows us to dynamically loop back to previous nodes or route to a human safely.
