@@ -18,7 +18,10 @@ I built the **Mumzworld Agentic Triage System**, a multimodal logistics routing 
 - **TRADEOFFS:** Architecture scope, LangGraph vs LangChain routing, and uncertainty logic can be found in the repository: [`TRADEOFFS.md`](https://github.com/adityasuhane-06/AI-Support-System/blob/main/TRADEOFFS.md)
 
 **6. AI Usage Note**
-I used **Google DeepMind's Antigravity Agent** for pair-programming, covering the FastAPI backend, LangGraph orchestration, and the React Three Fiber UI. The primary model is `gemini-2.5-flash` for multimodal intelligence. If Gemini is rate-limited, the system cascades to `google/gemma-3-12b-it:free` via OpenRouter, then falls back to `glm-4.7-flash` via Z.AI as a tertiary text-only fallback.
+**Harness:** Google DeepMind's Antigravity Agent — used as a continuous pair-coding loop (not one-shot generation) across the full build: FastAPI backend, LangGraph pipeline, Pydantic schema design, MongoDB seed data, React Three Fiber UI, and Railway/Vercel deployment config.
+**Models:** `gemini-2.5-flash` (primary, multimodal) → `google/gemma-3-12b-it:free` via OpenRouter (rate-limit fallback) → `glm-4.7-flash` via Z.AI (tertiary text-only fallback).
+**What worked:** Agent scaffolded the LangGraph `AgentState` TypedDict and 3-tier exception handling correctly on first attempt.
+**Where we overruled:** Agent suggested a deprecated OpenRouter model (`llama-3.2-11b-vision`) that returned a live 404. We manually scraped the OpenRouter `/models` API to identify the correct endpoint. We also stripped significant marketing language ("enterprise-grade", "eliminate triage latency") the agent added to the README during a full audit pass.
 
 **7. Time Log**
 - **Research & Scoping:** 1 hour (Deciding to build a structured RAG triage system to reduce incorrect refund approvals caused by AI hallucination).
