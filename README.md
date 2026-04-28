@@ -10,17 +10,17 @@ The pipeline leverages a decoupled React/Python architecture. Graph nodes execut
 
 ```mermaid
 graph TD
-    React["React + Vite Frontend"]:::frontend -->|"REST JSON + Base64"| API("FastAPI Backend"):::backend
-    API --> Graph{"LangGraph State Core"}:::graph
-    Graph -->|"Step 1"| Regex["Regex Intent Extraction"]
-    Regex -->|"Extracts Order ID"| Mongo[("MongoDB Catalog")]:::db
-    Mongo -->|"User & Order Context"| RAG["RAG Policy Context"]
-    RAG -->|"Aggregated Payload"| Gemini(("Gemini 2.5 Flash LLM")):::ai
-    Gemini -.->|"Multimodal Assessment"| Vision["Vision Defect Analysis"]
-    Vision -.-> Gemini
-    Gemini -->|"Strict JSON Validation"| Output["Structured Evaluation"]
-    Output --> API
-    API --> React
+    reactNode["React + Vite Frontend"]:::frontend -->|"REST JSON + Base64"| apiNode("FastAPI Backend"):::backend
+    apiNode --> coreNode{"LangGraph State Core"}:::graph
+    coreNode -->|"Step 1"| regexNode["Regex Intent Extraction"]
+    regexNode -->|"Extracts Order ID"| mongoNode[("MongoDB Catalog")]:::db
+    mongoNode -->|"User & Order Context"| ragNode["RAG Policy Context"]
+    ragNode -->|"Aggregated Payload"| geminiNode(("Gemini 2.5 Flash LLM")):::ai
+    geminiNode -.->|"Multimodal Assessment"| visionNode["Vision Defect Analysis"]
+    visionNode -.-> geminiNode
+    geminiNode -->|"Strict JSON Validation"| outNode["Structured Evaluation"]
+    outNode --> apiNode
+    apiNode --> reactNode
 
     classDef frontend fill:#0f172a,stroke:#d946ef,stroke-width:2px,color:#fff;
     classDef backend fill:#1e293b,stroke:#3b82f6,color:#fff;
