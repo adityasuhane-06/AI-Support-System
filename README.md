@@ -4,6 +4,13 @@ An autonomous, full-stack AI Customer Support system engineered specifically for
 
 ---
 
+> [!IMPORTANT]
+> **Challenge Grading Deliverables**
+> - **Evaluations & Test Cases:** See [EVALS.md](./EVALS.md) for our full 10-case evaluation rubric, scores, and uncertainty handling.
+> - **Tradeoffs & Architecture:** See [TRADEOFFS.md](./TRADEOFFS.md) for scope decisions, model rationale, and rejected concepts.
+
+---
+
 ## 📖 Project Context
 
 ### ❓ What is this?
@@ -103,3 +110,16 @@ npm install
 npm run dev
 ```
 👉 *Dashboard will dynamically map to:* `http://localhost:5173`
+
+---
+
+## 🤖 Tooling & Transparency
+
+In the spirit of complete transparency for this challenge, here is the exact tooling stack used to build this repository:
+
+- **AI Assistants Used:** The vast majority of this infrastructure (FastAPI, LangGraph orchestration, React Three Fiber UI, and Cloud Deployment configuration) was pair-programmed and architected using **Google DeepMind's Antigravity Agent**.
+- **Models Used:**
+  - `gemini-2.5-flash` (Primary Intelligence & Vision via Native API)
+  - `google/gemma-3-27b-it:free` (Secondary Vision Fallback via OpenRouter)
+  - `glm-4.7-flash` (Tertiary Text Fallback via Z.AI)
+- **Harnesses & Frameworks:** LangGraph (State orchestration), Pydantic (Strict schema validation), Vite + React (Frontend), Tailwind v4 (Styling), MongoDB Atlas (RAG Database).
