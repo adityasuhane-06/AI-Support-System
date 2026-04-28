@@ -1,16 +1,28 @@
-# React + Vite
+# 🎨 Mumzworld Support Dashboard: React Vector Console
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This directory hosts the high-fidelity presentation layer of the Triage UI. Designed actively on **React + Vite**, this module intercepts asynchronous status webhooks from the FastAPI pipeline and visually maps them to modern glassmorphism UX targets utilizing **Tailwind CSS v4** and **Framer Motion**.
 
-Currently, two official plugins are available:
+## 🖥️ Core UI Architecture
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This frontend is explicitly crafted to demonstrate the raw velocity of the AI backend to Support Team delegates through highly optimized visual abstractions.
 
-## React Compiler
+- **`AnimatedCore.jsx` (WebGL Abstraction):** Utilizes `@react-three/fiber` natively inside the DOM stream to dynamically render abstract Neural Meshes natively. The spinning Icosahedron visually locks logic states (`isProcessing`) to actual UI geometry.
+- **Multimodal Visual Hub:** The input core actively features a Javascript `FileReader` that immediately intercepts dragged hardware images, encoding them into transient `Base64` memory blocks entirely locally—eliminating multi-hop S3 latency.
+- **Omnichannel Drafting Array:** Natively handles responsive layout shifting to dynamically generate Dual-Pane English vs. Right-to-Left (RTL) natively translated Arabic Fusha drafts synchronously on the same cycle.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ⚙️ Tailwind V4 Subsystem
+This app runs completely off the bleeding-edge Next-Gen Tailwind CSS engine, dropping standard `tailwind.config.js` bloat in favor of explicitly executing strictly local `@theme` overrides inside `index.css`.
 
-## Expanding the ESLint configuration
+## 🛠️ Deployment Instructions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Install Module Dependencies**
+```bash
+npm install
+```
+
+2. **Initialize Vite Hot Module Replacement (HMR)**
+```bash
+npm run dev
+```
+
+The application mounts inherently at `http://localhost:5173`. Ensure the FastAPI core is actively mounted on `Port 8000` to avoid Cross-Origin API failures.
