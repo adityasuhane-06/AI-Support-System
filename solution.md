@@ -11,17 +11,17 @@ I built the **Mumzworld Agentic Triage System**, a multimodal logistics routing 
 - *(Setup and run instructions are located in the master `README.md` and take under 5 minutes to execute via Uvicorn/Vite).*
 
 **4. Walkthrough Video**
-- **Loom Walkthrough (5 inputs, including uncertainty refusal):** [https://drive.google.com/file/d/1ezWB1op4_ejJpfSK7vXUS479i4gGxfwO/view?usp=sharing](https://drive.google.com/file/d/1ezWB1op4_ejJpfSK7vXUS479i4gGxfwO/view?usp=sharing)
+- **Video Demo (5 inputs, including uncertainty refusal):** [https://drive.google.com/file/d/1ezWB1op4_ejJpfSK7vXUS479i4gGxfwO/view?usp=sharing](https://drive.google.com/file/d/1ezWB1op4_ejJpfSK7vXUS479i4gGxfwO/view?usp=sharing)
 
 **5. Markdown Deliverables**
-- **EVALS:** Detailed 10-input rubric, scoring, and failure honesty can be found in the repository: [`EVALS.md`](https://github.com/adityasuhane-06/AI-Support-System/blob/main/EVALS.md)
+- **EVALS:** Detailed 10-case rubric, scoring, and failure honesty can be found in the repository: [`EVALS.md`](https://github.com/adityasuhane-06/AI-Support-System/blob/main/EVALS.md)
 - **TRADEOFFS:** Architecture scope, LangGraph vs LangChain routing, and uncertainty logic can be found in the repository: [`TRADEOFFS.md`](https://github.com/adityasuhane-06/AI-Support-System/blob/main/TRADEOFFS.md)
 
 **6. AI Usage Note**
 I used **Google DeepMind's Antigravity Agent** for pair-programming, covering the FastAPI backend, LangGraph orchestration, and the React Three Fiber UI. The primary model is `gemini-2.5-flash` for multimodal intelligence. If Gemini is rate-limited, the system cascades to `google/gemma-3-12b-it:free` via OpenRouter, then falls back to `glm-4.7-flash` via Z.AI as a tertiary text-only fallback.
 
 **7. Time Log**
-- **Research & Scoping:** 1 hour (Deciding to build a structured RAG triage system to prevent refund hallucinations).
+- **Research & Scoping:** 1 hour (Deciding to build a structured RAG triage system to reduce incorrect refund approvals caused by AI hallucination).
 - **Backend & LangGraph Pipeline:** 2.5 hours (Setting up Pydantic strict schemas, MongoDB mocked data, and the 3-Tier Cascade).
 - **Frontend UI & Visualization:** 1 hour (Building the React Vite interface and wiring the API endpoints).
 - **Evals & Documentation:** 1 hour (Running adversarial edge cases and documenting tradeoffs).

@@ -13,7 +13,7 @@ A full-stack AI Customer Support prototype built for **Mumzworld**. It intercept
 
 ## 🌐 Live Deployments & Demonstration
 
-- **Walkthrough Video:** [Watch the Loom Demonstration](https://drive.google.com/file/d/1ezWB1op4_ejJpfSK7vXUS479i4gGxfwO/view?usp=sharing)
+- **Walkthrough Video:** [Watch the Video Demo](https://drive.google.com/file/d/1ezWB1op4_ejJpfSK7vXUS479i4gGxfwO/view?usp=sharing)
 - **Live React Frontend (Vercel):** [https://ai-support-system-three.vercel.app/](https://ai-support-system-three.vercel.app/)
 - **Live FastAPI Backend (Railway):** [https://ai-support-system-production.up.railway.app/api/health](https://ai-support-system-production.up.railway.app/api/health)
 
