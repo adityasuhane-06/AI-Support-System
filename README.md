@@ -1,6 +1,23 @@
 # Mumzworld AI: Agentic Triage Platform
 
-A full-stack, asynchronous AI Customer Support system engineered specifically for **Mumzworld**. This application intercepts incoming support requests, cross-references local MongoDB clusters via a stateful **LangGraph** pipeline, evaluates distinct logistical edge cases, performs multimodal image analysis, and synthesizes structured JSON resolutions dynamically in real-time.
+An autonomous, full-stack AI Customer Support system engineered specifically for **Mumzworld**. This application intercepts incoming support requests, cross-references local MongoDB clusters via a stateful **LangGraph** pipeline, evaluates distinct logistical edge cases, performs multimodal image analysis, and synthesizes structured JSON resolutions dynamically in real-time.
+
+---
+
+## 📖 Project Context
+
+### ❓ What is this?
+The Mumzworld Agentic Triage Node is an advanced Level-3 automated customer support platform. It intercepts raw customer complaint emails, physically analyzes uploaded images of damaged products using computer vision, securely taps into MongoDB to verify order parameters, and utilizes a stateful logic graph to output deterministic logistics commands alongside bilingual draft responses.
+
+### 🎯 Why did we build this?
+Traditional e-commerce support pipelines rely heavily on human agents manually cross-referencing return policies against massive logistics databases. This results in severe bottlenecks, slow resolution times, and the risk of approving fraudulent returns. This system was engineered to **eliminate triage latency**. By executing complex edge-case algorithms, the AI can instantly identify high-risk anomalies (e.g., medical hazards, cross-border fees, or serial return fraud) in milliseconds before safely handing the deeply-formatted ticket to a human support agent for 1-click execution.
+
+### 🏗️ How was it built?
+This distributed application safely isolates the intelligence layer from the frontend interface using a modern architecture:
+- **Orchestration:** A Python-based **LangGraph** pipeline enforcing deterministic, cyclic state management.
+- **Intelligence:** Google's natively multimodal **Gemini 2.5 Flash LLM** integrated via Langchain orchestration arrays.
+- **Backend Infrastructure:** A robust **FastAPI** REST interface running on Uvicorn, simulating live data aggregations from a local **MongoDB** (pymongo) persistence layer.
+- **Client Application:** A stateless **React + Vite** frontend natively utilizing **Tailwind v4** and **WebGL (@react-three/fiber)** for high-fidelity state visualizations and Base64 image parsing.
 
 ---
 
