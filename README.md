@@ -1,33 +1,24 @@
-# Mumzworld AI: Next-Gen Agentic Triage Platform
+# Mumzworld AI: Agentic Triage Platform
 
-An enterprise-grade, omnichannel AI Customer Support platform built explicitly for **Mumzworld**. This system intercepts incoming customer support emails, cross-references internal databases natively via an autonomous LangGraph pipeline, evaluates localized edge cases (like KSA cross-border fees and local hygiene standards), evaluates physical image submissions, and drafts fully bilingual (English/Fusha Arabic) resolution strategies in real-time.
+A full-stack, asynchronous AI Customer Support system engineered specifically for **Mumzworld**. This application intercepts incoming support requests, cross-references local MongoDB clusters via a stateful **LangGraph** pipeline, evaluates distinct logistical edge cases, performs multimodal image analysis, and synthesizes structured JSON resolutions dynamically in real-time.
 
 ---
 
-## ⚡ Architecture Diagram
+## ⚡ System Architecture
 
-The system operates on an asynchronous Python/React stack, utilizing a fully deterministic LangGraph pipeline to guarantee accurate enterprise grounding before consulting the model core.
+The pipeline leverages a decoupled React/Python architecture. Graph nodes execute deterministically to ensure accurate data retrieval and state management prior to LLM invocation.
 
 ```mermaid
 graph TD
-    %% Frontend Node
-    React[React + Vite Frontend\nThree.js Dashboard]:::frontend -->|REST API / Base64| API(FastAPI Gateway Node):::backend
-    
-    %% API to Langgraph
-    API --> Graph{LangGraph State Core}:::graph
-    
-    %% Langgraph Logic Flow
-    Graph -->|Step 1| Regex[Regex Intent Extraction]
-    Regex -->|Detects MW-XXXXX| Mongo[(MongoDB Catalog\n& VIP Profiles)]:::db
-    Mongo -->|Context| RAG[RAG Local Policy Rules]
-    RAG -->|Context| Gemini((Gemini 2.5 Flash\nMultimodal LLM)):::ai
-    
-    %% Multimodal Evaluation
-    Gemini -.->|Analyses| Vision[Visual Damage/Fraud Detection]
+    React["React + Vite Frontend"]:::frontend -->|"REST JSON + Base64"| API("FastAPI Backend"):::backend
+    API --> Graph{"LangGraph State Core"}:::graph
+    Graph -->|"Step 1"| Regex["Regex Intent Extraction"]
+    Regex -->|"Extracts Order ID"| Mongo[("MongoDB Catalog")]:::db
+    Mongo -->|"User & Order Context"| RAG["RAG Policy Context"]
+    RAG -->|"Aggregated Payload"| Gemini(("Gemini 2.5 Flash LLM")):::ai
+    Gemini -.->|"Multimodal Assessment"| Vision["Vision Defect Analysis"]
     Vision -.-> Gemini
-    
-    %% Output
-    Gemini -->|Strict JSON Output| Output[Structured Triage Response]
+    Gemini -->|"Strict JSON Validation"| Output["Structured Evaluation"]
     Output --> API
     API --> React
 
@@ -40,40 +31,40 @@ graph TD
 
 ---
 
-## 🚀 The 10 Enterprise Edge Cases
-The routing core natively understands deeply complex scenarios preventing hallucination and securing Mumzworld logistics. Standard "returns" are overridden if any of these conditions are met:
+## 🚀 Logistical Edge Cases & Validations
+The routing engine natively monitors 10 distinct constraints, effectively suppressing LLM hallucination and enforcing precise warehouse/logistical rulesets:
 
-1. **🏥 Severe Medical & Danger Hazmat:** If a product triggers "rash", "choking", or "hospital", the system physically blocks standard refunds and forces a **Red Escalation**, routing immediately to human legal/safety teams.
-2. **🚫 Serial Fraud Protection:** AI scans the User's MongoDB profile. If historical `returns > 3`, the request is flagged for Fraud Escalation inherently regardless of policy.
-3. **🛠️ Hardcoded Logistics Override:** If the DB indicates `weight_kg > 5.0`, the system revokes Aramex drop-off instructions and pivots seamlessly to `SCHEDULE_FREIGHT_PICKUP`.
-4. **📅 Live Warranty Constraints:** By tracking `datetime.now()` natively, an item returned after 180 days is dynamically evaluated against the catalog's `warranty: 12` integer. It will pivot intent to `WARRANTY_CLAIM` instead of rejecting it.
-5. **🛃 International Cross-Border Fees:** If the database `shipping_address` registers KSA instead of UAE, the LLM intercepts with a warning regarding a 50 AED cross-border fee structure deduction.
-6. **🩺 Hygiene Isolation:** Strict rejection of returns involving open breast pumps/diapers, quoting local hygiene standards directly fetched from RAG memory.
-7. **🎁 Gifting Anomalies:** Identifying `is_gift: true` in the MongoDB object natively blocks credit card refunds, successfully rerouting it to a Mumzworld Wallet Credit strategy.
-8. **💵 Proactive Wallet Up-selling:** If the user has a positive existing wallet balance, the AI proactively suggests returning to the Mumzworld Wallet rather than the bank, retaining platform liquidity.
-9. **⏳ Double Dipping Denials:** Database flags stating `active_return: True` cause immediate interception gracefully informing the customer a return is already active.
-10. **📦 Out-Of-Stock Exchange Pivots:** If a customer aggressively demands an "Exchange", but the inventory DB registers `in_stock: False`, the AI safely diffuses the aggression and pivots securely to `STORE_CREDIT`.
-
----
-
-## 🎨 Premium Next-Gen UX UI
-
-- **3D Neural Core Visualization:** The frontend leverages `@react-three/fiber` and Framer-Motion. An abstract Icosahedron wireframe acts as a visual anchor—idling in a deep slate rotation, and rapidly pulsing in Fuchsia (`#d946ef`) during Live Triage processing.
-- **Multimodal Visual File Hub:** Natively converts customer photos (e.g. proof of broken strollers) into `Base64` inside the browser, passing it natively to Gemini Flash over the LLM pipeline for deep visual fraud deterrence.
-- **Tailwind V4 Glassmorphism:** Operating entirely off the next-generation Tailwind 4 native CSS architecture, featuring deep blurs and a purely dark-mode hyper-minimalist palette.
-- **Fusha Arabic Translation Node:** Instantly provides natively translated, colloquial, Right-To-Left structured Fusha Arabic replies alongside the English response stream to super-power omnichannel support teams.
+1. **Medical Hazard Detection:** NLP logic identifies health-related keywords ("rash", "choking") and automatically overrides standard refund paths to invoke a human safety escalation.
+2. **Algorithmic Fraud Prevention:** The backend queries the MongoDB user profile. If `total_returns_count > 3`, the return is intercepted and flagged for manual fraud review.
+3. **Dynamic Logistics Routing:** If the DB query indicates item `weight_kg > 5.0`, standard courier fulfillment is suppressed in favor of `SCHEDULE_FREIGHT_PICKUP`.
+4. **Temporal Warranty Validation:** Integrates `datetime.now()` to validate return windows. If a product exceeds standard return limits but falls within the MongoDB `warranty` integer constraint, intent is pivoted to `WARRANTY_CLAIM`.
+5. **Geospatial Cross-Border Fees:** Validates `shipping_address`; non-domestic (KSA) targets generate an automated 50 AED cross-border deduction clause.
+6. **Hygiene & Compliance Isolation:** Strict conditional rejection of returns involving open hygiene products (e.g., breast pumps, diapers) via RAG policy lookup.
+7. **Gift-Transaction Handling:** `is_gift: true` boolean validations suppress traditional bank refunds, redirecting the capital to platform Wallet Credits.
+8. **Wallet Liquidity Retention:** If `wallet_balance_aed > 0`, the LLM natively suggests wallet refunds to maintain circulating platform capital.
+9. **Concurrency Blocking:** Database flags indicating `active_return: True` cause immediate interception, halting duplicate return generation.
+10. **Inventory-Aware Exchanges:** Requesting an exchange on items with `in_stock: False` dynamically diffuses the request and reroutes the customer to a `STORE_CREDIT` resolution.
 
 ---
 
-## 🛠️ Installation & Setup (Local Development)
+## 🎨 Frontend Architecture
+
+- **WebGL Rendering:** Native `@react-three/fiber` integration utilizing abstract `Icosahedron` meshes bound to Framer Motion to visualize synchronous processing states.
+- **Client-Side File Processing:** Native `FileReader` implementations enabling robust Base64 encoding for multimodal image uploads without requiring intermediary object storage pipelines.
+- **CSS Architecture:** Tailwind v4 stack utilizing native CSS `@theme` variables for modular styling without complex Javascript configurations.
+- **Bilingual NLP Synthesis:** The generative pipeline enforces strict synthesis of native Fusha Arabic RTL (Right-to-Left) alongside English output to ensure robust multi-regional deployability.
+
+---
+
+## 🛠️ Local Development Setup
 
 ### 1. Database & Environment Configuration
-Ensure your `backend/.env` file contains your native Gemini Developer API key:
+Ensure your `backend/.env` file contains your core Gemini Developer API key:
 ```bash
 GEMINI_API_KEY="AIzaSyB49lVZ......"
 ```
 
-Because we use an internalized MongoDB architecture mock for the challenge, you must mathematically seed it prior to your first execution. 
+Because the application relies on an internalized MongoDB mock for data integrity verification, you must synthetically seed it prior to your first execution. 
 ```bash
 cd backend
 python seed_db.py
