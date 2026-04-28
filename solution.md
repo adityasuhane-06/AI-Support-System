@@ -3,7 +3,7 @@
 **1. Track:** Track A: AI Engineering Intern
 
 **2. Summary**
-I engineered the **Mumzworld Agentic Triage Node**, an autonomous, enterprise-grade logistics routing system designed for the customer support team. The system intercepts unstructured, multimodal customer complaints (text and images), securely cross-references local MongoDB clusters for live inventory/policy context (RAG), and utilizes a stateful LangGraph pipeline to output highly deterministic, Pydantic-validated JSON triage payloads. It instantly flags high-risk edge cases (e.g., medical hazards, serial return fraud, hygiene policy violations) and translates draft responses into Fusha Arabic, eliminating manual support bottlenecks while neutralizing AI hallucination liability.
+I built the **Mumzworld Agentic Triage Node**, a multimodal logistics routing prototype designed to assist the customer support team. The system intercepts unstructured customer complaints (text and images), cross-references a local MongoDB cluster for live inventory/policy context (RAG), and utilizes a stateful LangGraph pipeline to output highly deterministic, Pydantic-validated JSON triage payloads. It instantly flags edge cases (e.g., medical hazards, serial return fraud, hygiene policy violations) and translates draft responses into Fusha Arabic, helping to reduce manual support bottlenecks while minimizing AI hallucination risks.
 
 **3. Prototype Access**
 - **GitHub Repository:** [https://github.com/adityasuhane-06/AI-Support-System](https://github.com/adityasuhane-06/AI-Support-System)
