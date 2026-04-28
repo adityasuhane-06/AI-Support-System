@@ -1,6 +1,6 @@
 # Mumzworld AI: Agentic Triage Platform
 
-An autonomous, full-stack AI Customer Support system engineered specifically for **Mumzworld**. This application intercepts incoming support requests, cross-references local MongoDB clusters via a stateful **LangGraph** pipeline, evaluates distinct logistical edge cases, performs multimodal image analysis, and synthesizes structured JSON resolutions dynamically in real-time.
+A full-stack AI Customer Support prototype built for **Mumzworld**. It intercepts incoming support requests, cross-references a MongoDB catalog via a stateful **LangGraph** pipeline, handles multimodal image input, and returns structured JSON triage payloads with bilingual draft responses.
 
 ---
 
@@ -13,7 +13,7 @@ An autonomous, full-stack AI Customer Support system engineered specifically for
 
 ## 🌐 Live Deployments & Demonstration
 
-- **Walkthrough Video:** [Watch the 4-Minute Loom Demonstration](https://drive.google.com/file/d/1ezWB1op4_ejJpfSK7vXUS479i4gGxfwO/view?usp=sharing)
+- **Walkthrough Video:** [Watch the Loom Demonstration](https://drive.google.com/file/d/1ezWB1op4_ejJpfSK7vXUS479i4gGxfwO/view?usp=sharing)
 - **Live React Frontend (Vercel):** [https://ai-support-system-three.vercel.app/](https://ai-support-system-three.vercel.app/)
 - **Live FastAPI Backend (Railway):** [https://ai-support-system-production.up.railway.app/api/health](https://ai-support-system-production.up.railway.app/api/health)
 
@@ -22,15 +22,15 @@ An autonomous, full-stack AI Customer Support system engineered specifically for
 ## 📖 Project Context
 
 ### ❓ What is this?
-The Mumzworld Agentic Triage System is an advanced Level-3 automated customer support platform. It intercepts raw customer complaint emails, physically analyzes uploaded images of damaged products using computer vision, securely taps into MongoDB to verify order parameters, and utilizes a stateful logic graph to output deterministic logistics commands alongside bilingual draft responses.
+The Mumzworld Agentic Triage System is an automated customer support prototype. It intercepts raw customer complaint emails, analyzes uploaded images of damaged products using computer vision, queries MongoDB to verify order parameters, and uses a stateful logic graph to output deterministic logistics commands alongside bilingual draft responses.
 
 ### 🎯 Why did we build this?
-Traditional e-commerce support pipelines rely heavily on human agents manually cross-referencing return policies against massive logistics databases. This results in severe bottlenecks, slow resolution times, and the risk of approving fraudulent returns. This system was engineered to **eliminate triage latency**. By executing complex edge-case algorithms, the AI can instantly identify high-risk anomalies (e.g., medical hazards, cross-border fees, or serial return fraud) in milliseconds before safely handing the deeply-formatted ticket to a human support agent for 1-click execution.
+Traditional e-commerce support pipelines rely heavily on human agents manually cross-referencing return policies against logistics databases. This causes slow resolution times and the risk of approving fraudulent returns. By building a triage layer, the AI handles the heavy lifting — extracting order IDs, checking policies, and flagging risk — before handing a structured ticket to a human agent for review.
 
 ### 🏗️ How was it built?
 This distributed application safely isolates the intelligence layer from the frontend interface using a modern architecture:
 - **Orchestration:** A Python-based **LangGraph** pipeline enforcing deterministic, cyclic state management.
-- **Intelligence:** Google's natively multimodal **Gemini 2.5 Flash LLM** integrated via Langchain orchestration arrays.
+- **Intelligence:** Google's natively multimodal **Gemini 2.5 Flash** integrated via LangChain with a 3-tier cascade fallback (OpenRouter → Z.AI).
 - **Backend Infrastructure:** A robust **FastAPI** REST interface running on Uvicorn, simulating live data aggregations from a local **MongoDB** (pymongo) persistence layer.
 - **Client Application:** A stateless **React + Vite** frontend natively utilizing **Tailwind v4** and **WebGL (@react-three/fiber)** for high-fidelity state visualizations and Base64 image parsing.
 
@@ -73,7 +73,7 @@ The routing engine natively monitors 10 distinct constraints, effectively suppre
 5. **Geospatial Cross-Border Fees:** Validates `shipping_address`; non-domestic (KSA) targets generate an automated 50 AED cross-border deduction clause.
 6. **Hygiene & Compliance Isolation:** Strict conditional rejection of returns involving open hygiene products (e.g., breast pumps, diapers) via RAG policy lookup.
 7. **Gift-Transaction Handling:** `is_gift: true` boolean validations suppress traditional bank refunds, redirecting the capital to platform Wallet Credits.
-8. **Wallet Liquidity Retention:** If `wallet_balance_aed > 0`, the LLM natively suggests wallet refunds to maintain circulating platform capital.
+8. **Wallet Refund Preference:** If `wallet_balance_aed > 0`, the LLM suggests a wallet refund rather than a bank transfer, which is faster for the customer.
 9. **Concurrency Blocking:** Database flags indicating `active_return: True` cause immediate interception, halting duplicate return generation.
 10. **Inventory-Aware Exchanges:** Requesting an exchange on items with `in_stock: False` dynamically diffuses the request and reroutes the customer to a `STORE_CREDIT` resolution.
 
@@ -128,6 +128,6 @@ In the spirit of complete transparency for this challenge, here is the exact too
 - **AI Assistants Used:** The vast majority of this infrastructure (FastAPI, LangGraph orchestration, React Three Fiber UI, and Cloud Deployment configuration) was pair-programmed and architected using **Google DeepMind's Antigravity Agent**.
 - **Models Used:**
   - `gemini-2.5-flash` (Primary Intelligence & Vision via Native API)
-  - `google/gemma-3-27b-it:free` (Secondary Vision Fallback via OpenRouter)
+  - `google/gemma-3-12b-it:free` (Secondary Vision Fallback via OpenRouter)
   - `glm-4.7-flash` (Tertiary Text Fallback via Z.AI)
 - **Harnesses & Frameworks:** LangGraph (State orchestration), Pydantic (Strict schema validation), Vite + React (Frontend), Tailwind v4 (Styling), MongoDB Atlas (RAG Database).

@@ -1,6 +1,6 @@
 # System Evaluations & Test Cases
 
-This document outlines the evaluation rubric and 10 test cases used to validate the Mumzworld AI Support System. We aimed for an aggressive mix of standard logistical inquiries, critical edge cases, and adversarial/out-of-domain inputs.
+This document outlines the evaluation rubric and 10 test cases used to validate the Mumzworld AI Support System. We used a mix of standard logistical inquiries, critical edge cases, and adversarial/out-of-domain inputs.
 
 ## Evaluation Rubric
 - **Pass:** The LangGraph pipeline successfully classified the intent, extracted the Order ID (if present), assigned the correct risk level, and generated a perfectly compliant Pydantic JSON payload.
@@ -24,7 +24,7 @@ This document outlines the evaluation rubric and 10 test cases used to validate 
 ### 3. Critical Medical Hazard (High Leverage)
 - **Input:** "I applied the baby cream (MW-80001) and my baby immediately developed a huge red rash. I am taking them to the doctor!"
 - **Expected:** Immediate override to `CRITICAL_MEDICAL_HAZARD`. High risk, panic sentiment.
-- **Result:** **PASS**. The LangGraph node bypassed standard policy routing and generated a severe escalation payload, promising immediate investigation.
+- **Result:** **PASS**. The LangGraph pipeline bypassed standard policy routing and generated a severe escalation payload, promising immediate investigation.
 
 ### 4. Hygiene & Compliance Policy (Adversarial)
 - **Input:** "I want to return these diapers from order MW-80004. I just didn't like them."
@@ -64,4 +64,4 @@ This document outlines the evaluation rubric and 10 test cases used to validate 
 ---
 
 ## Final Score: 95%
-The system successfully navigated 9 out of 10 edge cases flawlessly. The only minor failure was the multi-intent adversarial prompt, which highlighted a limitation in handling concurrent, unrelated requests within a single execution cycle. However, the system's ability to gracefully refuse out-of-domain prompts (Uncertainty Handling) is rock-solid.
+The system successfully handled 9 out of 10 edge cases correctly. The only failure was the multi-intent adversarial prompt, where the system prioritized one intent and dropped the secondary question. This is a known limitation documented in TRADEOFFS.md. The system's ability to refuse out-of-domain prompts was consistent across all tested inputs.
